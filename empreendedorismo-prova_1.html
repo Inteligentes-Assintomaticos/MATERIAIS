@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Empreendedorismo Digital – Material de Estudo</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', serif;
+    background: #f7f5f0;
+    color: #1a1a1a;
+    line-height: 1.85;
+    font-size: 16px;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    background: #1b3a5c;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+  }
+  .cover .label {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #a8c4e0;
+    margin-bottom: 20px;
+  }
+  .cover h1 {
+    font-size: 2.6rem;
+    font-weight: bold;
+    line-height: 1.3;
+    max-width: 700px;
+    margin-bottom: 18px;
+  }
+  .cover h1 span { color: #f4c842; }
+  .cover .subtitle {
+    font-size: 1.1rem;
+    color: #c8dff0;
+    max-width: 560px;
+  }
+  .cover .meta {
+    margin-top: 48px;
+    font-size: 13px;
+    color: #a8c4e0;
+    letter-spacing: 1px;
+  }
+
+  /* LAYOUT */
+  article {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 32px 100px;
+  }
+
+  /* TOC */
+  .toc {
+    background: #eef2f7;
+    border-left: 5px solid #1b3a5c;
+    padding: 28px 32px;
+    margin-bottom: 60px;
+    border-radius: 0 6px 6px 0;
+  }
+  .toc h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1b3a5c;
+    margin-bottom: 16px;
+  }
+  .toc ol {
+    padding-left: 20px;
+  }
+  .toc li {
+    margin-bottom: 6px;
+    font-size: 0.97rem;
+  }
+  .toc a {
+    color: #1b3a5c;
+    text-decoration: none;
+    border-bottom: 1px dotted #1b3a5c;
+  }
+  .toc a:hover { color: #c4930a; }
+
+  /* HEADINGS */
+  h1, h2, h3 {
+    font-family: 'Georgia', serif;
+    color: #1b3a5c;
+  }
+  .section-title {
+    font-size: 1.6rem;
+    border-bottom: 3px solid #f4c842;
+    padding-bottom: 8px;
+    margin: 60px 0 24px;
+  }
+  h3 {
+    font-size: 1.15rem;
+    margin: 32px 0 10px;
+    color: #2d5a8e;
+  }
+
+  p { margin-bottom: 16px; }
+
+  /* HIGHLIGHT CARDS */
+  .card {
+    background: #ffffff;
+    border-left: 4px solid #2d5a8e;
+    padding: 18px 22px;
+    margin: 24px 0;
+    border-radius: 0 6px 6px 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+  .card.accent { border-left-color: #f4c842; }
+  .card.green  { border-left-color: #2e7d5a; }
+
+  .card-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 6px;
+  }
+
+  /* GRID CHARACTERISTICS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  @media(max-width: 600px){ .grid-2 { grid-template-columns: 1fr; } }
+
+  .char-item {
+    background: #fff;
+    padding: 16px 18px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    border-top: 3px solid #1b3a5c;
+  }
+  .char-item h4 {
+    font-size: 1rem;
+    color: #1b3a5c;
+    margin-bottom: 6px;
+  }
+  .char-item p { font-size: 0.92rem; margin: 0; }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+    font-size: 0.94rem;
+  }
+  th {
+    background: #1b3a5c;
+    color: #fff;
+    padding: 11px 14px;
+    text-align: left;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #dde3ec;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #f0f4fa; }
+
+  /* TIPO CARDS */
+  .tipo-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+    padding: 22px 26px;
+    margin-bottom: 20px;
+    border-left: 5px solid #2d5a8e;
+  }
+  .tipo-card.ind  { border-left-color: #1b3a5c; }
+  .tipo-card.fran { border-left-color: #c4930a; }
+  .tipo-card.dig  { border-left-color: #2e7d5a; }
+  .tipo-card.soc  { border-left-color: #8e2d5a; }
+  .tipo-card.coop { border-left-color: #5a2d8e; }
+
+  .tipo-card h3 { margin: 0 0 8px; font-size: 1.15rem; }
+  .tipo-card p  { font-size: 0.93rem; margin: 0 0 10px; }
+  .tipo-card ul { padding-left: 18px; font-size: 0.9rem; }
+  .tipo-card ul li { margin-bottom: 4px; }
+
+  /* QUESTIONS */
+  .question-block {
+    background: #fff;
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.07);
+  }
+  .question-block .qnum {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 6px;
+  }
+  .question-block p { margin-bottom: 10px; font-weight: bold; color: #1b3a5c; }
+  .question-block .answer {
+    font-weight: normal;
+    color: #333;
+    border-top: 1px dashed #ccc;
+    padding-top: 10px;
+    margin-top: 4px;
+    font-size: 0.93rem;
+  }
+
+  /* EXAM QUESTIONS */
+  .exam-q {
+    background: #fff;
+    border-left: 4px solid #2e7d5a;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    border-radius: 0 6px 6px 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+  .exam-q .enum {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #2e7d5a;
+    margin-bottom: 6px;
+  }
+  .exam-q p { font-weight: bold; color: #1a1a1a; margin-bottom: 10px; }
+  .exam-q ol { padding-left: 22px; font-size: 0.93rem; }
+  .exam-q ol li { margin-bottom: 5px; }
+  .exam-q .gabarito {
+    margin-top: 10px;
+    font-size: 0.88rem;
+    color: #2e7d5a;
+    font-weight: bold;
+  }
+
+  /* DIVIDER */
+  hr.fancy {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 48px 0;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    font-size: 0.82rem;
+    color: #aaa;
+    padding: 40px 0 20px;
+    border-top: 1px solid #e2e8f0;
+  }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="cover">
+  <div class="label">Material de Estudo</div>
+  <h1>Empreendedorismo Digital<br><span>Perfil e Tipos</span></h1>
+  <p class="subtitle">Conceitos, características da pessoa empreendedora, tipos de empreendedorismo, questões de revisão e simulado de prova.</p>
+  <div class="meta">Baseado em: SEBRAE (2021) · PUCRS (2020) · Schmidt &amp; Bohnenberger (2009) · Santos (2008)</div>
+</div>
+
+<article>
+
+  <!-- SUMÁRIO -->
+  <div class="toc">
+    <h2>Sumário</h2>
+    <ol>
+      <li><a href="#intro">Introdução ao Empreendedorismo</a></li>
+      <li><a href="#perfil">Perfil da Pessoa Empreendedora</a></li>
+      <li><a href="#caract">Características Detalhadas (SEBRAE)</a></li>
+      <li><a href="#santos">Potencial Empreendedor segundo Santos (2008)</a></li>
+      <li><a href="#schmidt">Fatores de Schmidt e Bohnenberger (2009)</a></li>
+      <li><a href="#tipos">Tipos de Empreendedorismo</a></li>
+      <li><a href="#resumo">Tabela-Resumo Comparativa</a></li>
+      <li><a href="#questoes">Lista de Questões de Revisão</a></li>
+      <li><a href="#prova">Simulado de Prova (Estilo Vestibular/Concurso)</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. INTRODUÇÃO -->
+  <section id="intro">
+    <h2 class="section-title">1. Introdução ao Empreendedorismo</h2>
+
+    <p>O <strong>empreendedorismo</strong> é o processo de identificar oportunidades e transformá-las em negócios ou projetos viáveis, assumindo riscos calculados e buscando inovação. Nos últimos anos, com a consolidação da internet móvel e das ferramentas digitais, o empreendedorismo ganhou uma dimensão completamente nova: o <strong>empreendedorismo digital</strong>.</p>
+
+    <div class="card accent">
+      <div class="card-title">Por que estudar empreendedorismo?</div>
+      O empreendedorismo impulsiona a economia, gera emprego e promove inovação social. Compreender o perfil do empreendedor e os tipos de empreendedorismo é essencial tanto para quem deseja abrir um negócio quanto para profissionais que atuam em ambientes corporativos.
+    </div>
+
+    <p>Neste material, estudaremos:</p>
+    <ul style="padding-left:22px; margin-bottom:16px;">
+      <li>As <strong>características</strong> que compõem o perfil da pessoa empreendedora;</li>
+      <li>Os <strong>modelos teóricos</strong> que descrevem esse perfil (SEBRAE, Santos, Schmidt e Bohnenberger);</li>
+      <li>Os <strong>cinco principais tipos</strong> de empreendedorismo existentes no Brasil e no mundo.</li>
+    </ul>
+  </section>
+
+  <!-- 2. PERFIL -->
+  <section id="perfil">
+    <h2 class="section-title">2. Perfil da Pessoa Empreendedora</h2>
+
+    <p>Não existe um único "tipo" de empreendedor. No entanto, pesquisas de diversas instituições — como o <strong>SEBRAE</strong> — identificaram um conjunto de características que aparecem com frequência em pessoas com alto potencial empreendedor.</p>
+
+    <div class="card">
+      <div class="card-title">Atenção</div>
+      Essas características são <strong>possíveis</strong>, não obrigatórias. Um empreendedor pode ter um perfil forte em criatividade e ser ainda mais forte em liderança — o conjunto varia de pessoa para pessoa.
+    </div>
+
+    <p>O SEBRAE (2021) elenca as seguintes características centrais:</p>
+
+    <div class="grid-2">
+      <div class="char-item">
+        <h4>Perseverança</h4>
+        <p>Capacidade de seguir em frente diante de obstáculos, sem desistir ao primeiro sinal de dificuldade.</p>
+      </div>
+      <div class="char-item">
+        <h4>Liderança</h4>
+        <p>Habilidade de planejar, motivar e comprometer uma equipe. Um bom líder sabe ouvir e criar um ambiente de segurança.</p>
+      </div>
+      <div class="char-item">
+        <h4>Resiliência</h4>
+        <p>Adaptar-se às adversidades e superar obstáculos, mantendo um perfil flexível e orientado à solução de problemas.</p>
+      </div>
+      <div class="char-item">
+        <h4>Autoconfiança</h4>
+        <p>Alta confiança em si mesmo e em suas opiniões; facilita a tomada de decisões e o arriscar-se de forma calculada.</p>
+      </div>
+      <div class="char-item">
+        <h4>Capacidade Analítica</h4>
+        <p>Competência de analisar o mercado e as tendências, estabelecendo um planejamento de carreira e de negócio coerente.</p>
+      </div>
+      <div class="char-item">
+        <h4>Criatividade</h4>
+        <p>Desenvolver ideias inovadoras e enxergar o cotidiano de forma diferente. Pode ser aprendida e aperfeiçoada.</p>
+      </div>
+      <div class="char-item">
+        <h4>Automotivação</h4>
+        <p>Capacidade de se manter motivado sem depender de cobranças externas, pois o empreendimento é frequentemente uma jornada solitária.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="fancy">
+
+  <!-- 3. CARACTERÍSTICAS DETALHADAS -->
+  <section id="caract">
+    <h2 class="section-title">3. Características Adicionais do Perfil</h2>
+
+    <p>Além das características do SEBRAE, outros autores (OTRE, s/a; Schmidt e Bohnenberger, 2009) acrescentam dimensões complementares:</p>
+
+    <h3>Autoeficácia</h3>
+    <p>Capacidade de mobilizar motivação e ações necessárias para controlar eventos na própria vida. O empreendedor autoeficaz acredita que pode influenciar os resultados ao seu redor.</p>
+
+    <h3>Assunção de Riscos</h3>
+    <p>Adaptação às mudanças do ambiente econômico com rapidez e eficácia. Empreendedores não fogem do risco — calculam-no e decidem com base em informações disponíveis.</p>
+
+    <h3>Planejamento</h3>
+    <p>Definir o que fazer e como fazer; antecipar fatos e ter uma visão de futuro do negócio. Planejar é organizar recursos (tempo, dinheiro, pessoas) de forma estratégica.</p>
+
+    <h3>Detecção de Oportunidades</h3>
+    <p>Identificar e capturar o valor de oportunidades de negócio que outros não percebem, inclusive em contextos adversos.</p>
+
+    <h3>Persistência</h3>
+    <p>Manter a capacidade de trabalho mesmo diante de fracassos parciais, encarando-os como aprendizado.</p>
+
+    <h3>Sociabilidade</h3>
+    <p>Capacidade de comunicação e construção de redes de relacionamento (equipe, clientes, fornecedores).</p>
+
+    <h3>Inovação</h3>
+    <p>Diferenciar o próprio negócio por meio de produtos, serviços ou processos novos, criando vantagem competitiva.</p>
+  </section>
+
+  <hr class="fancy">
+
+  <!-- 4. SANTOS (2008) -->
+  <section id="santos">
+    <h2 class="section-title">4. Potencial Empreendedor segundo Santos (2008)</h2>
+
+    <p>Para Santos (2008, apud Pietrovski et al., 2019, p. 29), o <strong>potencial empreendedor</strong> envolve um conjunto articulado de características. Veja cada uma delas:</p>
+
+    <table>
+      <tr>
+        <th>Característica</th>
+        <th>Descrição</th>
+      </tr>
+      <tr>
+        <td><strong>Intenção de empreender</strong></td>
+        <td>Vontade genuína de abrir um negócio próprio.</td>
+      </tr>
+      <tr>
+        <td><strong>Oportunidade</strong></td>
+        <td>Perceber oportunidades de negócio em lugares incomuns, onde outros enxergam apenas dificuldades.</td>
+      </tr>
+      <tr>
+        <td><strong>Persistência</strong></td>
+        <td>Admitir erros, redefinir rumos e estratégias, lutar pelo sucesso do negócio.</td>
+      </tr>
+      <tr>
+        <td><strong>Eficiência</strong></td>
+        <td>Antecipar-se aos problemas, sendo proativo em vez de reativo.</td>
+      </tr>
+      <tr>
+        <td><strong>Informações</strong></td>
+        <td>Selecionar dados relevantes e, quando necessário, buscar especialistas para embasar a tomada de decisão.</td>
+      </tr>
+      <tr>
+        <td><strong>Planejamento</strong></td>
+        <td>Planejar, dirigir, controlar e organizar as atividades da organização.</td>
+      </tr>
+      <tr>
+        <td><strong>Metas</strong></td>
+        <td>Quantificar o futuro da organização em termos de metas e prazos mensuráveis.</td>
+      </tr>
+      <tr>
+        <td><strong>Controle</strong></td>
+        <td>Liderar processos organizacionais, gerenciar e delegar responsabilidades.</td>
+      </tr>
+      <tr>
+        <td><strong>Persuasão</strong></td>
+        <td>Influenciar, liderar e motivar a equipe rumo a metas e resultados.</td>
+      </tr>
+      <tr>
+        <td><strong>Redes de relação</strong></td>
+        <td>Criar uma rede entre equipe, clientes e fornecedores para garantir o sucesso do negócio.</td>
+      </tr>
+    </table>
+  </section>
+
+  <hr class="fancy">
+
+  <!-- 5. SCHMIDT E BOHNENBERGER -->
+  <section id="schmidt">
+    <h2 class="section-title">5. Fatores de Schmidt e Bohnenberger (2009)</h2>
+
+    <p>Schmidt e Bohnenberger (2009, p. 462) conduziram um estudo que agrupou as características empreendedoras em <strong>6 fatores</strong>, identificados por análise fatorial:</p>
+
+    <div class="card">
+      <div class="card-title">Fator 1</div>
+      <strong>Detecção de oportunidades + Autoeficácia + Persistência</strong> — núcleo do comportamento orientado a resultados.
+    </div>
+    <div class="card">
+      <div class="card-title">Fator 2</div>
+      <strong>Liderança</strong> — construto de influência e motivação de equipes.
+    </div>
+    <div class="card">
+      <div class="card-title">Fator 3</div>
+      <strong>Planejador</strong> — capacidade de organizar, antecipar e estruturar o negócio.
+    </div>
+    <div class="card">
+      <div class="card-title">Fator 4</div>
+      <strong>Inovador</strong> — diferenciação do negócio por novidades em produtos, serviços ou processos.
+    </div>
+    <div class="card">
+      <div class="card-title">Fator 5</div>
+      <strong>Assunção de Risco</strong> — disposição para agir em ambientes de incerteza calculada.
+    </div>
+    <div class="card">
+      <div class="card-title">Fator 6</div>
+      <strong>Sociável</strong> — comunicação e construção de redes de relacionamento.
+    </div>
+
+    <div class="card accent" style="margin-top:28px;">
+      <div class="card-title">Dica de prova</div>
+      O <strong>Fator 1</strong> é o mais cobrado em questões, pois reúne três características de alto valor: oportunidade, autoeficácia e persistência — todas ligadas à capacidade de o empreendedor "fazer acontecer" mesmo em condições adversas.
+    </div>
+  </section>
+
+  <hr class="fancy">
+
+  <!-- 6. TIPOS -->
+  <section id="tipos">
+    <h2 class="section-title">6. Tipos de Empreendedorismo</h2>
+
+    <p>Segundo OTRE (s/a) e PUCRS (2020), existem cinco tipos principais de empreendedorismo. Cada um possui características, exemplos e motivações distintas:</p>
+
+    <!-- Individual -->
+    <div class="tipo-card ind">
+      <h3>1. Empreendedorismo Individual</h3>
+      <p>É o tipo mais comum no Brasil. O empreendedor atua por conta própria, podendo ser <strong>formal</strong> ou <strong>informal</strong>.</p>
+      <ul>
+        <li><strong>Informal:</strong> sem CNPJ ou nota fiscal (ex.: ambulantes, vendedores em casa).</li>
+        <li><strong>Formal (MEI):</strong> Microempreendedor Individual; possui CNPJ e acesso à previdência social.</li>
+      </ul>
+    </div>
+
+    <!-- Franquias -->
+    <div class="tipo-card fran">
+      <h3>2. Empreendedorismo de Franquias</h3>
+      <p>O empreendedor adquire um <strong>modelo de negócio pronto</strong>, com processos, marca e suporte definidos pelo franqueador.</p>
+      <ul>
+        <li>Menor risco inicial em comparação ao negócio próprio do zero.</li>
+        <li>Exemplo clássico: franquias de redes de fast food (McDonald's, Bob's).</li>
+        <li>O franqueado paga royalties pela utilização da marca e do modelo.</li>
+      </ul>
+    </div>
+
+    <!-- Digital -->
+    <div class="tipo-card dig">
+      <h3>3. Empreendedorismo Digital</h3>
+      <p>Corresponde à oferta de produtos e serviços no <strong>ambiente virtual</strong>, impulsionada pela democratização da internet.</p>
+      <ul>
+        <li><strong>Transição:</strong> negócio físico que migra para o digital.</li>
+        <li><strong>Nativo digital:</strong> negócio que nasce já no ambiente online.</li>
+        <li><strong>Ampliação:</strong> negócio físico que inclui recursos digitais para ampliar produtos e serviços.</li>
+        <li>Exemplos: e-commerces, cursos online, e-books, streamings, aplicativos.</li>
+      </ul>
+    </div>
+
+    <!-- Social -->
+    <div class="tipo-card soc">
+      <h3>4. Empreendedorismo Social</h3>
+      <p>Visa o <strong>desenvolvimento humano e social</strong>; o lucro é secundário à missão de impacto positivo.</p>
+      <ul>
+        <li>Busca solucionar problemas ambientais, sociais, culturais e econômicos.</li>
+        <li>Foco em melhorar o contexto em que a sociedade está inserida.</li>
+        <li>Exemplos: ONGs, cooperativas de impacto, negócios de base comunitária.</li>
+      </ul>
+    </div>
+
+    <!-- Cooperativo -->
+    <div class="tipo-card coop">
+      <h3>5. Empreendedorismo Cooperativo</h3>
+      <p>Baseia-se na <strong>colaboração</strong> entre dois ou mais empreendedores que se unem para alcançar metas comuns.</p>
+      <ul>
+        <li>Cada membro contribui com suas particularidades e competências.</li>
+        <li>A união potencializa recursos e reduz riscos individuais.</li>
+        <li>Exemplos: cooperativas agrícolas, cooperativas de crédito, startups co-fundadas.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="fancy">
+
+  <!-- 7. TABELA RESUMO -->
+  <section id="resumo">
+    <h2 class="section-title">7. Tabela-Resumo: Tipos de Empreendedorismo</h2>
+
+    <table>
+      <tr>
+        <th>Tipo</th>
+        <th>Foco Principal</th>
+        <th>Formalidade</th>
+        <th>Exemplos</th>
+      </tr>
+      <tr>
+        <td><strong>Individual</strong></td>
+        <td>Atuação solo / autossuficiência</td>
+        <td>Formal (MEI) ou Informal</td>
+        <td>Autônomos, MEI, ambulantes</td>
+      </tr>
+      <tr>
+        <td><strong>Franquias</strong></td>
+        <td>Modelo de negócio pronto</td>
+        <td>Formal</td>
+        <td>McDonald's, redes de academias</td>
+      </tr>
+      <tr>
+        <td><strong>Digital</strong></td>
+        <td>Produtos/serviços na internet</td>
+        <td>Formal (geralmente)</td>
+        <td>E-commerce, cursos online</td>
+      </tr>
+      <tr>
+        <td><strong>Social</strong></td>
+        <td>Impacto social/ambiental</td>
+        <td>Formal (ONG, associação)</td>
+        <td>ONGs, negócios de impacto</td>
+      </tr>
+      <tr>
+        <td><strong>Cooperativo</strong></td>
+        <td>Colaboração entre empreendedores</td>
+        <td>Formal</td>
+        <td>Cooperativas, co-fundadores</td>
+      </tr>
+    </table>
+  </section>
+
+  <hr class="fancy">
+
+  <!-- 8. QUESTÕES DE REVISÃO -->
+  <section id="questoes">
+    <h2 class="section-title">8. Lista de Questões de Revisão</h2>
+
+    <p>Estas questões têm como objetivo fixar os conceitos estudados. Tente responder antes de ver a resposta.</p>
+
+    <div class="question-block">
+      <div class="qnum">Questão 01</div>
+      <p>O que é empreendedorismo e qual sua importância na economia contemporânea?</p>
+      <div class="answer">Empreendedorismo é o processo de identificar oportunidades e transformá-las em negócios viáveis, assumindo riscos calculados e promovendo inovação. Sua importância está na geração de emprego, riqueza e desenvolvimento social e tecnológico.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="qnum">Questão 02</div>
+      <p>Cite e explique três características da pessoa empreendedora segundo o SEBRAE (2021).</p>
+      <div class="answer">Exemplos: <strong>Perseverança</strong> (seguir em frente apesar dos obstáculos), <strong>Resiliência</strong> (adaptar-se às adversidades) e <strong>Criatividade</strong> (desenvolver ideias inovadoras para o negócio).</div>
+    </div>
+
+    <div class="question-block">
+      <div class="qnum">Questão 03</div>
+      <p>Qual a diferença entre perseverança e resiliência no contexto empreendedor?</p>
+      <div class="answer">Perseverança é a disposição de continuar agindo até atingir o objetivo; resiliência é a capacidade de se recuperar de adversidades e se adaptar a novos cenários. Ambas se complementam, mas enquanto a perseverança foca na continuidade, a resiliência foca na adaptação.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="qnum">Questão 04</div>
+      <p>O que Santos (2008) entende por "intenção de empreender"?</p>
+      <div class="answer">É a vontade genuína de abrir um negócio próprio — o ponto de partida psicológico de todo processo empreendedor. Sem essa intenção, as demais características ficam sem direcionamento.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="qnum">Questão 05</div>
+      <p>Como Schmidt e Bohnenberger (2009) organizam as características empreendedoras? Descreva os 6 fatores.</p>
+      <div class="answer">Os autores agruparam as características em 6 fatores por análise fatorial: <strong>F1</strong> – Detecção de oportunidades, Autoeficácia e Persistência; <strong>F2</strong> – Liderança; <strong>F3</strong> – Planejador; <strong>F4</strong> – Inovador; <strong>F5</strong> – Assume Risco; <strong>F6</strong> – Sociável.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="qnum">Questão 06</div>
+      <p>Quais são os cinco tipos de empreendedorismo estudados? Cite um exemplo para cada.</p>
+      <div class="answer"><strong>Individual</strong> (MEI autônomo), <strong>Franquias</strong> (McDonald's), <strong>Digital</strong> (loja virtual/e-commerce), <strong>Social</strong> (ONG de impacto ambiental), <strong>Cooperativo</strong> (cooperativa agrícola).</div>
+    </div>
+
+    <div class="question-block">
+      <div class="qnum">Questão 07</div>
+      <p>Qual a diferença entre o empreendedor individual formal e informal?</p>
+      <div class="answer">O <strong>formal</strong> possui CNPJ (geralmente como MEI) e acesso a benefícios previdenciários. O <strong>informal</strong> não possui registro legal nem emite nota fiscal — exemplos incluem ambulantes e vendedores domésticos.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="qnum">Questão 08</div>
+      <p>O que caracteriza o empreendedorismo digital? Cite as três formas de ingressar nesse modelo.</p>
+      <div class="answer">O empreendedorismo digital oferece produtos/serviços no ambiente virtual. As três formas são: (1) <strong>transição</strong> do negócio físico para o digital; (2) <strong>negócio nativo digital</strong> (nasce online); (3) <strong>inclusão de recursos digitais</strong> para ampliar o negócio físico existente.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="qnum">Questão 09</div>
+      <p>Em que o empreendedorismo social difere dos demais tipos quanto ao objetivo principal?</p>
+      <div class="answer">No empreendedorismo social, o <strong>lucro é colocado em segundo plano</strong>. O objetivo central é solucionar problemas sociais, ambientais, culturais ou econômicos, melhorando o contexto em que a sociedade está inserida.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="qnum">Questão 10</div>
+      <p>Por que a automotivação é especialmente importante para o empreendedor?</p>
+      <div class="answer">Porque o empreendedorismo é uma jornada frequentemente solitária: não há chefe para cobrar metas ou estimular o desempenho. O empreendedor precisa ser sua própria fonte de motivação para manter produtividade e foco nos objetivos.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="qnum">Questão 11</div>
+      <p>O que é o MEI e por que ele representa uma forma de empreendedorismo individual formal?</p>
+      <div class="answer">MEI (Microempreendedor Individual) é uma categoria jurídica que permite ao trabalhador autônomo formalizar seu negócio com CNPJ, emitir nota fiscal e ter acesso à previdência social. Representa o empreendedorismo individual formal por oferecer legalidade e proteção ao trabalhador.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="qnum">Questão 12</div>
+      <p>Explique o conceito de "redes de relação" no perfil empreendedor, segundo Santos (2008).</p>
+      <div class="answer">Redes de relação referem-se à capacidade de o empreendedor criar e manter vínculos estratégicos com equipe, clientes e fornecedores. Essas redes são fundamentais para garantir o sucesso do negócio, pois ampliam o acesso a recursos, informações e oportunidades.</div>
+    </div>
+  </section>
+
+  <hr class="fancy">
+
+  <!-- 9. SIMULADO -->
+  <section id="prova">
+    <h2 class="section-title">9. Simulado de Prova</h2>
+
+    <p>Questões no estilo de provas acadêmicas, vestibulares e concursos. Cada questão apresenta alternativas e o gabarito comentado.</p>
+
+    <div class="exam-q">
+      <div class="enum">Questão 01 — Múltipla Escolha</div>
+      <p>De acordo com o SEBRAE (2021), qual das características a seguir descreve a capacidade do empreendedor de se manter focado e produtivo sem depender de cobranças externas?</p>
+      <ol type="A">
+        <li>Resiliência</li>
+        <li>Criatividade</li>
+        <li>Automotivação</li>
+        <li>Capacidade analítica</li>
+        <li>Liderança</li>
+      </ol>
+      <div class="gabarito">Gabarito: C — Automotivação. O empreendedor não possui um chefe para cobrar metas; deve ser sua própria fonte de motivação.</div>
+    </div>
+
+    <div class="exam-q">
+      <div class="enum">Questão 02 — Múltipla Escolha</div>
+      <p>Segundo Schmidt e Bohnenberger (2009), o Fator 1 agrupa quais características do perfil empreendedor?</p>
+      <ol type="A">
+        <li>Liderança, Planejamento e Inovação</li>
+        <li>Detecção de oportunidades, Autoeficácia e Persistência</li>
+        <li>Assunção de riscos, Sociabilidade e Criatividade</li>
+        <li>Persuasão, Metas e Controle</li>
+        <li>Perseverança, Resiliência e Automotivação</li>
+      </ol>
+      <div class="gabarito">Gabarito: B — O Fator 1 consolida: Detecção de oportunidades, Autoeficácia e Persistência.</div>
+    </div>
+
+    <div class="exam-q">
+      <div class="enum">Questão 03 — Múltipla Escolha</div>
+      <p>João adquiriu o direito de operar uma rede de restaurantes já consolidada, utilizando a marca, os processos e os fornecedores do grupo original. Que tipo de empreendedorismo João pratica?</p>
+      <ol type="A">
+        <li>Empreendedorismo social</li>
+        <li>Empreendedorismo cooperativo</li>
+        <li>Empreendedorismo digital</li>
+        <li>Empreendedorismo de franquias</li>
+        <li>Empreendedorismo individual informal</li>
+      </ol>
+      <div class="gabarito">Gabarito: D — Empreendedorismo de franquias. João adquiriu um modelo de negócio pronto, característica central desse tipo.</div>
+    </div>
+
+    <div class="exam-q">
+      <div class="enum">Questão 04 — Múltipla Escolha</div>
+      <p>Uma organização sem fins lucrativos cria um programa para capacitar jovens em vulnerabilidade social, obtendo receita por meio de doações e projetos financiados. Esse modelo representa:</p>
+      <ol type="A">
+        <li>Empreendedorismo individual formal</li>
+        <li>Empreendedorismo de franquias</li>
+        <li>Empreendedorismo cooperativo</li>
+        <li>Empreendedorismo digital</li>
+        <li>Empreendedorismo social</li>
+      </ol>
+      <div class="gabarito">Gabarito: E — Empreendedorismo social. O foco é o impacto social, com o lucro em segundo plano.</div>
+    </div>
+
+    <div class="exam-q">
+      <div class="enum">Questão 05 — Múltipla Escolha</div>
+      <p>Sobre o MEI (Microempreendedor Individual), é CORRETO afirmar que:</p>
+      <ol type="A">
+        <li>É uma modalidade de empreendedorismo informal, pois não exige CNPJ.</li>
+        <li>Representa a forma formal do empreendedorismo individual, com CNPJ e acesso à previdência.</li>
+        <li>É exclusivo para negócios digitais.</li>
+        <li>Implica a existência de pelo menos dois sócios.</li>
+        <li>Não permite a emissão de nota fiscal.</li>
+      </ol>
+      <div class="gabarito">Gabarito: B — O MEI é formal: possui CNPJ, pode emitir nota fiscal e tem acesso a benefícios previdenciários.</div>
+    </div>
+
+    <div class="exam-q">
+      <div class="enum">Questão 06 — Múltipla Escolha</div>
+      <p>De acordo com Santos (2008), a característica do empreendedor que envolve antecipar-se aos problemas e agir de forma proativa é denominada:</p>
+      <ol type="A">
+        <li>Persuasão</li>
+        <li>Intenção de empreender</li>
+        <li>Eficiência</li>
+        <li>Redes de relação</li>
+        <li>Metas</li>
+      </ol>
+      <div class="gabarito">Gabarito: C — Eficiência, que inclui antecipar-se aos problemas e ser proativo.</div>
+    </div>
+
+    <div class="exam-q">
+      <div class="enum">Questão 07 — Verdadeiro ou Falso</div>
+      <p>Analise as afirmações abaixo e julgue como verdadeiro (V) ou falso (F):</p>
+      <ol type="I">
+        <li>A criatividade empreendedora não pode ser aprendida — é exclusivamente um talento nato.</li>
+        <li>O empreendedorismo cooperativo é baseado na colaboração entre dois ou mais empreendedores.</li>
+        <li>O empreendedorismo digital só é possível para quem já possui um negócio físico consolidado.</li>
+        <li>A liderança no contexto empreendedor inclui saber ouvir, motivar e comprometer a equipe.</li>
+      </ol>
+      <div class="gabarito">Gabarito: F, V, F, V — A criatividade pode ser aprendida (SEBRAE, 2021); o digital pode nascer diretamente online (PUCRS, 2020).</div>
+    </div>
+
+    <div class="exam-q">
+      <div class="enum">Questão 08 — Dissertativa</div>
+      <p>Explique a diferença entre resiliência e perseverança no perfil empreendedor, indicando em que situações cada uma se mostra mais relevante.</p>
+      <div class="gabarito">Resposta esperada: <strong>Perseverança</strong> é a determinação de continuar agindo até alcançar os objetivos, relevante em situações de longa duração ou de acúmulo de dificuldades. <strong>Resiliência</strong> é a capacidade de se adaptar e se recuperar de adversidades pontuais, relevante em crises, mudanças de mercado ou falhas específicas. Ambas se complementam: o empreendedor resiliente absorve o impacto e o perseverante não desiste do percurso.</div>
+    </div>
+
+    <div class="exam-q">
+      <div class="enum">Questão 09 — Múltipla Escolha</div>
+      <p>O empreendedorismo digital pode acontecer de três formas distintas. Qual das alternativas NÃO corresponde a uma dessas formas, segundo PUCRS (2020) e SEBRAE (2019)?</p>
+      <ol type="A">
+        <li>Transição do negócio físico para o digital</li>
+        <li>Negócio digital criado já no ambiente online</li>
+        <li>Inclusão de recursos digitais para ampliar produtos e serviços de negócio existente</li>
+        <li>Aquisição de modelo de negócio digital de uma empresa franqueadora</li>
+        <li>Todas as alternativas acima correspondem a formas do empreendedorismo digital</li>
+      </ol>
+      <div class="gabarito">Gabarito: D — A aquisição de franquia digital é uma combinação de dois tipos (franquia + digital), mas não é listada como uma das três formas do empreendedorismo digital na literatura estudada.</div>
+    </div>
+
+    <div class="exam-q">
+      <div class="enum">Questão 10 — Múltipla Escolha</div>
+      <p>Considerando o modelo de Schmidt e Bohnenberger (2009), o Fator 6 do perfil empreendedor está relacionado a qual característica?</p>
+      <ol type="A">
+        <li>Inovação</li>
+        <li>Planejamento</li>
+        <li>Assunção de riscos</li>
+        <li>Sociabilidade</li>
+        <li>Liderança</li>
+      </ol>
+      <div class="gabarito">Gabarito: D — O Fator 6 representa o construto "Sociável", relacionado à comunicação e à construção de redes de relacionamento.</div>
+    </div>
+  </section>
+
+  <hr class="fancy">
+
+  <footer>
+    <p>Fontes: SEBRAE (2021) · PUCRS (2020) · Schmidt e Bohnenberger (2009) · Santos (2008 apud Pietrovski et al., 2019) · OTRE (s/a)</p>
+    <p style="margin-top:8px;">Material elaborado com base em: <em>Empreendedorismo Digital – Perfil da Pessoa Empreendedora e Tipos de Empreendedorismo</em> – Suzy Menezes, IFAL Campus Palmeira dos Índios, 2026.1</p>
+  </footer>
+
+</article>
+</body>
+</html>
